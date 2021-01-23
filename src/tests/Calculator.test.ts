@@ -4,7 +4,7 @@ import { Calculator } from "../app/Calculator";
 describe("Calculator", () => {
  
     it("should return a number", () => {
-        console.log("jest is running")
+      //  console.log("jest is running")
     })
 
     it("should increment the number", () => {
@@ -23,5 +23,16 @@ describe("Calculator", () => {
   
         const resultValue = Calculator.generateCalcSetting(1,'+',5);
         expect(actualValue).toEqual(resultValue);
+    })
+
+    it('should return a error if is invalid action',() => {
+        
+        try {
+            Calculator.generateCalcSetting(1,'M',5);    
+        } catch (error) {
+            expect(error).toBeInstanceOf(Error);
+            expect(error).toHaveProperty('message','Invalid action')
+        }
+
     })
  })
